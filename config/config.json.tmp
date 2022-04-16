@@ -1,0 +1,4 @@
+{
+  "ns2_stats_api_base": "http://localhost:8080/api"
+
+}

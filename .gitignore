@@ -1,5 +1,8 @@
 # Python
 venv
 
+# IDE
+.idea
+
 # Project specific
 config/config.json
