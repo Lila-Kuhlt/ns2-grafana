@@ -1,5 +1,8 @@
 # ns2-grafana
 
 ## Setup
-1. Run `pip install prometheus_client`
+Run `pip install -r requirements.txt`
 
+
+## Run
+Run `python src/main.py`
