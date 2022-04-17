@@ -1,4 +1,4 @@
 {
-  "ns2_stats_api_base": "http://localhost:8080/api"
-
+    "ns2_stats_api_base": "http://localhost:8080/api"
+    "metrics_update_interval_in_seconds": 10
 }

@@ -1,21 +1,20 @@
 from prometheus_client import Gauge
-import random
-
-METRIC = Gauge('kd', 'KD of all players')
-
-
-def init():
-    METRIC.labels('kid ilias').set(0)
-    return 1
+from src.metrics._METRIC import _METRIC
+from numbers import Number
 
 
-def get():
-    return METRIC
+class KD(_METRIC):
+    def __init__(self):
+        super().__init__(Gauge('kd', 'KD of all players', ['player']))
 
+    def update(self, api_data):
+        for player in api_data['data']['users']:
+            kd = api_data['data']['users'][player]['kd']
 
-def update():
-    METRIC.labels('kid ilias').set(random.randint(0, 100))
-    return 1
+            try:
+                self.METRIC.labels(player).set(kd)
+            except:
+                continue
 
 
 # from prometheus_client import Gauge, start_http_server

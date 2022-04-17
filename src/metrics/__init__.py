@@ -1,17 +1,19 @@
 __all__ = (
-    'update_metrics',
-    'init_metrics',
-    'KD',
-    'KDA',
-    'MAPS',
+    'init',
+    'update_all',
+    '_METRIC',
+    'KD'
 )
 
+from src.metrics.KD import KD
 
-def init_metrics():
-    for metric in __all__:
-        metric.init()
+metrics = []
 
 
-def update_metrics():
-    for metric in __all__:
-        metric.update()
+def init():
+    metrics.append(KD())
+
+
+def update_all(api_data):
+    for metric in metrics:
+        metric.update(api_data)
