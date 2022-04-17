@@ -14,7 +14,7 @@ def update_metric():
 
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
-    start(8000)
+    start_http_server(8000)
     print("Starting server on port 8000...\nhttp://localhost:8000/metrics")
 
     # Generate some requests.
