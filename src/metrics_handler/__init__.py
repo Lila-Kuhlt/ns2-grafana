@@ -13,7 +13,6 @@ metrics_list = []
 
 def init():
     for metric in metrics.__all__:
-        print(metric)
         module = import_module('src.metrics_handler.metrics.' + metric)
         metric_cls = getattr(module, metric)
         metrics_list.append(metric_cls())
