@@ -18,6 +18,7 @@
       }
     ]
   },
+  "description": "Stats for NS2",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -26,7 +27,7 @@
   "liveNow": false,
   "panels": [
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -34,212 +35,296 @@
         "y": 0
       },
       "id": 6,
-      "panels": [
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
+      "panels": [],
+      "title": "Total Stats",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
               },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
+              {
+                "color": "red",
+                "value": 80
               }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 15,
-            "w": 12,
-            "x": 0,
-            "y": 1
-          },
-          "id": 2,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "4_CWTqU7k"
-              },
-              "exemplar": true,
-              "expr": "kd",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{player}}",
-              "refId": "A"
-            }
-          ],
-          "title": "KD",
-          "type": "timeseries"
+            ]
+          }
         },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 1
-          },
-          "id": 4,
-          "options": {
-            "legend": {
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "pieType": "pie",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "4_CWTqU7k"
-              },
-              "exemplar": true,
-              "expr": "maps",
-              "interval": "",
-              "legendFormat": "{{maps}}",
-              "refId": "A"
-            }
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
           ],
-          "title": "Maps Total Games",
-          "type": "piechart"
+          "show": false
         },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Value"
+          }
+        ]
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
         {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
           },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 9
-          },
-          "id": 12,
-          "options": {
-            "legend": {
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "pieType": "pie",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "8.4.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "4_CWTqU7k"
-              },
-              "exemplar": true,
-              "expr": "total_wins",
-              "interval": "",
-              "legendFormat": "{{race}}",
-              "refId": "A"
-            }
-          ],
-          "title": "Total Wins",
-          "type": "piechart"
+          "exemplar": false,
+          "expr": "players{stat_type=\"kd\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{player}}",
+          "refId": "A"
         }
       ],
-      "title": "General Stats",
-      "type": "row"
+      "title": "Current KD",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "player_name",
+                "Value"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 35,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Value"
+          }
+        ]
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": false,
+          "expr": "players{stat_type=\"kda\"}",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{player}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Current KDA",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "player_name",
+                "Value"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 7,
+        "x": 12,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "maps",
+          "interval": "",
+          "legendFormat": "{{map}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Maps Total Games",
+      "type": "piechart"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 5,
+        "x": 19,
+        "y": 1
+      },
+      "id": 12,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "total_wins",
+          "interval": "",
+          "legendFormat": "{{race}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Wins",
+      "type": "piechart"
     },
     {
       "collapsed": false,
@@ -247,7 +332,446 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 16
+      },
+      "id": 32,
+      "panels": [],
+      "repeat": "map",
+      "title": "Player Stats",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 37,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "players{stat_type=\"kd\"}",
+          "interval": "",
+          "legendFormat": "{{player_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "KD Series",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 30
+      },
+      "id": 41,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "players{stat_type=\"kda\"}",
+          "interval": "",
+          "legendFormat": "{{player_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "KDA Series",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 30
+      },
+      "id": 39,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "players{stat_type=\"kills\"}",
+          "interval": "",
+          "legendFormat": "{{player_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Kills",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 43
+      },
+      "id": 40,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "players{stat_type=\"assists\"}",
+          "interval": "",
+          "legendFormat": "{{player_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Assists",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 43
+      },
+      "id": 38,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "4_CWTqU7k"
+          },
+          "exemplar": true,
+          "expr": "players{stat_type=\"deaths\"}",
+          "interval": "",
+          "legendFormat": "{{player_name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Deaths",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 56
       },
       "id": 10,
       "panels": [],
@@ -272,12 +796,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
+        "h": 7,
+        "w": 3,
         "x": 0,
-        "y": 2
+        "y": 57
       },
       "id": 8,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_biodome.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -337,12 +868,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 4,
-        "y": 2
+        "h": 7,
+        "w": 3,
+        "x": 3,
+        "y": 57
       },
       "id": 13,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_caged.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -402,12 +940,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 8,
-        "y": 2
+        "h": 7,
+        "w": 3,
+        "x": 6,
+        "y": 57
       },
       "id": 14,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_derelict.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -467,12 +1012,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 12,
-        "y": 2
+        "h": 7,
+        "w": 3,
+        "x": 9,
+        "y": 57
       },
       "id": 16,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_descent.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -532,12 +1084,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 16,
-        "y": 2
+        "h": 7,
+        "w": 3,
+        "x": 12,
+        "y": 57
       },
       "id": 17,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_docking.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -597,12 +1156,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 20,
-        "y": 2
+        "h": 7,
+        "w": 3,
+        "x": 15,
+        "y": 57
       },
       "id": 20,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_eclipse.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -662,12 +1228,18 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 0,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 18,
+        "y": 57
       },
       "id": 19,
+      "links": [
+        {
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_fusion.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -727,12 +1299,18 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 4,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 21,
+        "y": 57
       },
       "id": 23,
+      "links": [
+        {
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_kodiak.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -792,12 +1370,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 8,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 0,
+        "y": 64
       },
       "id": 22,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_metro.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -857,12 +1442,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 12,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 3,
+        "y": 64
       },
       "id": 21,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_mineshaft.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -922,12 +1514,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 16,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 6,
+        "y": 64
       },
       "id": 24,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_origin.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -987,12 +1586,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 20,
-        "y": 10
+        "h": 7,
+        "w": 3,
+        "x": 9,
+        "y": 64
       },
       "id": 18,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_refinery.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1052,12 +1658,18 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 0,
-        "y": 18
+        "h": 7,
+        "w": 3,
+        "x": 12,
+        "y": 64
       },
       "id": 26,
+      "links": [
+        {
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_summit.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1117,12 +1729,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 4,
-        "y": 18
+        "h": 7,
+        "w": 3,
+        "x": 15,
+        "y": 64
       },
       "id": 25,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_tantih.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1182,12 +1801,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 8,
-        "y": 18
+        "h": 7,
+        "w": 3,
+        "x": 18,
+        "y": 64
       },
       "id": 27,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_tram.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1247,12 +1873,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 12,
-        "y": 18
+        "h": 7,
+        "w": 3,
+        "x": 21,
+        "y": 64
       },
       "id": 30,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Ma",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_unearthed.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1312,12 +1945,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 4,
-        "x": 16,
-        "y": 18
+        "h": 7,
+        "w": 3,
+        "x": 0,
+        "y": 71
       },
       "id": 29,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Map",
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_veil.png"
+        }
+      ],
       "options": {
         "displayLabels": [
           "percent"
@@ -1359,10 +1999,12 @@
       "type": "piechart"
     }
   ],
-  "refresh": "5s",
+  "refresh": "1h",
   "schemaVersion": 35,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "NS2"
+  ],
   "templating": {
     "list": []
   },
@@ -1374,6 +2016,6 @@
   "timezone": "",
   "title": "NS2-Stats",
   "uid": "Q-kzR687k",
-  "version": 14,
-  "weekStart": ""
+  "version": 29,
+  "weekStart": "monday"
 }
