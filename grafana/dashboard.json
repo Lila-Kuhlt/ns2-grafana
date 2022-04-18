@@ -1739,7 +1739,7 @@
         {
           "targetBlank": true,
           "title": "Map",
-          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_tantih.png"
+          "url": "https://naturalselection.fandom.com/wiki/Maps?file=Overview_ns2_tanith.png"
         }
       ],
       "options": {
@@ -2016,6 +2016,6 @@
   "timezone": "",
   "title": "NS2-Stats",
   "uid": "Q-kzR687k",
-  "version": 29,
+  "version": 30,
   "weekStart": "monday"
 }
