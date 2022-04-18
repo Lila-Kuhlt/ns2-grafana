@@ -7,6 +7,7 @@ __all__ = (
 
 from src.metrics_handler import metrics
 from importlib import import_module
+from threading import Thread
 
 metrics_list = []
 
@@ -21,7 +22,7 @@ def init():
 def update_all(api_data):
     for metric in metrics_list:
         try:
-            metric.update(api_data)
+            Thread(target=metric.update, args=(api_data,)).start()
         except:
             print("Update_All error")
 

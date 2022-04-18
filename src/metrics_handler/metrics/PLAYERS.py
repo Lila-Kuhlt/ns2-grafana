@@ -18,7 +18,7 @@ class PLAYERS(_METRIC):
                 self.METRIC.labels(player_name, 'kills').set(kills)
                 self.METRIC.labels(player_name, 'assists').set(assists)
                 self.METRIC.labels(player_name, 'deaths').set(deaths)
-                self.METRIC.labels(player_name, 'kd').set(deaths)
-                self.METRIC.labels(player_name, 'kda').set(deaths)
+                self.METRIC.labels(player_name, 'kd').set(kd)
+                self.METRIC.labels(player_name, 'kda').set(kda)
             except:
                 continue
