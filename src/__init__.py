@@ -8,15 +8,15 @@ from src.metrics_handler import init, update_all
 from util import api, config
 import time
 
-
 if __name__ == '__main__':
     cfg = config.get()
     api_data = api.get_ns2_api_data(cfg["ns2_stats_api_url"])
     init()
 
     # Start up the server to expose the metrics_handler.
-    start_http_server(8000)
-    print("Starting server on port 8000...\nhttp://localhost:8000/metrics_handler")
+    server_port = cfg["server_port"]
+    start_http_server(server_port)
+    print("Starting server on port %s...\nhttp://localhost:%s/" % (str(server_port), str(server_port)))
 
     # Generate some requests.
     while True:
