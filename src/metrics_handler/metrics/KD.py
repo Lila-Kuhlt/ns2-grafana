@@ -1,5 +1,5 @@
 from prometheus_client import Gauge
-from src.metrics._METRIC import _METRIC
+from src.metrics_handler._METRIC import _METRIC
 
 
 class KD(_METRIC):

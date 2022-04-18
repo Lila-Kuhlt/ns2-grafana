@@ -1,10 +1,10 @@
 __all__ = (
-    'metrics',
+    'metrics_handler',
     'util'
 )
 
 from prometheus_client import start_http_server
-from src.metrics import init, update_all
+from src.metrics_handler import init, update_all
 from util import api, config
 import time
 
@@ -14,9 +14,9 @@ if __name__ == '__main__':
     api_data = api.get_ns2_api_data(cfg["ns2_stats_api_url"])
     init()
 
-    # Start up the server to expose the metrics.
+    # Start up the server to expose the metrics_handler.
     start_http_server(8000)
-    print("Starting server on port 8000...\nhttp://localhost:8000/metrics")
+    print("Starting server on port 8000...\nhttp://localhost:8000/metrics_handler")
 
     # Generate some requests.
     while True:
