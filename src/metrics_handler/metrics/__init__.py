@@ -3,5 +3,6 @@ __all__ = (
     'KDA',
     'MAP_WINS',
     'MAPS',
+    'PLAYERS',
     'TOTAL_WINS'
 )
