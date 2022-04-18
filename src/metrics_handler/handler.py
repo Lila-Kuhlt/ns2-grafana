@@ -1,4 +1,4 @@
-import KD
+from src.metrics_handler.metrics import KD
 
 metrics = []
 
