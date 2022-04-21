@@ -6,4 +6,4 @@ Run `pip install -r requirements.txt`
 
 
 ## Run
-Run `python src/__init__.py`
+Run `python -m src`

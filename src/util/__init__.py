@@ -1,4 +1,3 @@
 __all__ = (
-    'api',
-    'config'
+    'api'
 )

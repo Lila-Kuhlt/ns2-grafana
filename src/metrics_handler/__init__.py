@@ -22,7 +22,8 @@ def init():
 def update_all(api_data):
     for metric in metrics_list:
         try:
-            Thread(target=metric.update, args=(api_data,)).start()
+            metric.update(api_data)
+            # Thread(target=metric.update, args=(api_data,)).start()
         except:
             print("Update_All error")
 
