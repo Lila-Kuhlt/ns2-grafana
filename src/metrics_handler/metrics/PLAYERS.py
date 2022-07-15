@@ -1,5 +1,5 @@
 from prometheus_client import Gauge
-from src.metrics_handler._METRIC import _METRIC
+from metrics_handler._METRIC import _METRIC
 
 
 class PLAYERS(_METRIC):

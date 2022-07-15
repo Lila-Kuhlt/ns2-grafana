@@ -4,7 +4,7 @@ __all__ = (
 )
 
 from prometheus_client import start_http_server
-from src.metrics_handler import init, update_all
+from metrics_handler import init, update_all
 from util import api, config
 import time
 
