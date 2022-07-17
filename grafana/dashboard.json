@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -18,16 +21,20 @@
       }
     ]
   },
-  "description": "Stats for NS2",
+  "description": "General Stats for NS2",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -36,10 +43,23 @@
       },
       "id": 6,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "HBsh5mg4z"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Total Stats",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -47,7 +67,8 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -64,7 +85,20 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "player_name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 124
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 15,
@@ -82,22 +116,18 @@
           "show": false
         },
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Value"
-          }
-        ]
+        "sortBy": []
       },
-      "pluginVersion": "8.4.6",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "4_CWTqU7k"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "players{stat_type=\"kd\"}",
+          "expr": "ns2_players{stat_type=\"kd\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -122,6 +152,10 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -129,7 +163,8 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -146,7 +181,20 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "player_name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 121
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 15,
@@ -171,7 +219,7 @@
           }
         ]
       },
-      "pluginVersion": "8.4.6",
+      "pluginVersion": "9.0.3",
       "targets": [
         {
           "datasource": {
@@ -179,7 +227,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": false,
-          "expr": "players{stat_type=\"kda\"}",
+          "expr": "ns2_players{stat_type=\"kda\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -204,6 +252,10 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -252,7 +304,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "maps",
+          "expr": "ns2_maps",
           "interval": "",
           "legendFormat": "{{map}}",
           "refId": "A"
@@ -262,6 +314,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -317,7 +373,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "total_wins",
+          "expr": "ns2_total_wins",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -328,6 +384,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -337,10 +397,23 @@
       "id": 32,
       "panels": [],
       "repeat": "map",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "HBsh5mg4z"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Player Stats",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -359,13 +432,16 @@
               "viz": false
             },
             "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -416,7 +492,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "players{stat_type=\"kd\"}",
+          "expr": "ns2_players{stat_type=\"kd\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "refId": "A"
@@ -426,6 +502,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -450,7 +530,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -501,7 +581,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "players{stat_type=\"kda\"}",
+          "expr": "ns2_players{stat_type=\"kda\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "refId": "A"
@@ -511,6 +591,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -535,7 +619,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -586,7 +670,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "players{stat_type=\"kills\"}",
+          "expr": "ns2_players{stat_type=\"kills\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "refId": "A"
@@ -596,6 +680,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -620,7 +708,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -671,7 +759,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "players{stat_type=\"assists\"}",
+          "expr": "ns2_players{stat_type=\"assists\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "refId": "A"
@@ -681,6 +769,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -705,7 +797,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -756,7 +848,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "players{stat_type=\"deaths\"}",
+          "expr": "ns2_players{stat_type=\"deaths\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "refId": "A"
@@ -767,6 +859,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -775,10 +871,23 @@
       },
       "id": 10,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "HBsh5mg4z"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Map Stats",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -840,7 +949,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_biodome\"}",
+          "expr": "ns2_map_wins{map=\"ns2_biodome\"}",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{race}}",
@@ -851,6 +960,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -912,7 +1025,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_caged\"}",
+          "expr": "ns2_map_wins{map=\"ns2_caged\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -922,6 +1035,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -984,7 +1101,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_derelict\"}",
+          "expr": "ns2_map_wins{map=\"ns2_derelict\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -994,6 +1111,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1056,7 +1177,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_descent\"}",
+          "expr": "ns2_map_wins{map=\"ns2_descent\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1066,6 +1187,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1128,7 +1253,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_docking\"}",
+          "expr": "ns2_map_wins{map=\"ns2_docking\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1138,6 +1263,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1200,7 +1329,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_eclipse\"}",
+          "expr": "ns2_map_wins{map=\"ns2_eclipse\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1210,6 +1339,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1271,7 +1404,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_fusion\"}",
+          "expr": "ns2_map_wins{map=\"ns2_fusion\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1281,6 +1414,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1342,7 +1479,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_kodiak\"}",
+          "expr": "ns2_map_wins{map=\"ns2_kodiak\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1352,6 +1489,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1414,7 +1555,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_metro\"}",
+          "expr": "ns2_map_wins{map=\"ns2_metro\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1424,6 +1565,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1486,7 +1631,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_mineshaft\"}",
+          "expr": "ns2_map_wins{map=\"ns2_mineshaft\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1496,6 +1641,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1558,7 +1707,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_origin\"}",
+          "expr": "ns2_map_wins{map=\"ns2_origin\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1568,6 +1717,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1630,7 +1783,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_refinery\"}",
+          "expr": "ns2_map_wins{map=\"ns2_refinery\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1640,6 +1793,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1701,7 +1858,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_summit\"}",
+          "expr": "ns2_map_wins{map=\"ns2_summit\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1711,6 +1868,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1773,7 +1934,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_tanith\"}",
+          "expr": "ns2_map_wins{map=\"ns2_tanith\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1783,6 +1944,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1845,7 +2010,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_tram\"}",
+          "expr": "ns2_map_wins{map=\"ns2_tram\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1855,6 +2020,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1917,7 +2086,7 @@
             "uid": "4_CWTqU7k"
           },
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_unearthed\"}",
+          "expr": "ns2_map_wins{map=\"ns2_unearthed\"}",
           "interval": "",
           "legendFormat": "{{race}}",
           "refId": "A"
@@ -1927,6 +2096,10 @@
       "type": "piechart"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "HBsh5mg4z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1988,10 +2161,12 @@
             "type": "prometheus",
             "uid": "4_CWTqU7k"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "map_wins{map=\"ns2_veil\"}",
+          "expr": "ns2_map_wins{map=\"ns2_veil\"}",
           "interval": "",
           "legendFormat": "{{race}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1999,8 +2174,8 @@
       "type": "piechart"
     }
   ],
-  "refresh": "1h",
-  "schemaVersion": 35,
+  "refresh": "1d",
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [
     "NS2"
@@ -2012,10 +2187,17 @@
     "from": "now-5m",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "refresh_intervals": [
+      "1d",
+      "2d",
+      "1w",
+      "2w"
+    ]
+  },
   "timezone": "",
-  "title": "NS2-Stats",
+  "title": "NS2-General",
   "uid": "Q-kzR687k",
-  "version": 30,
+  "version": 10,
   "weekStart": "monday"
 }
