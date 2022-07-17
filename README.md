@@ -11,6 +11,9 @@ This project defines metrics for [Prometheus](https://prometheus.io/) from game 
 Run `python src/__init__.py`
 
 ## Externals
+### NS2-Stat
+Note that you have to run [NS2-Stat](https://github.com/Lila-Kuhlt/ns2-stat) that provided the game data as api. Just go to the project and read their docu for help.
+
 ### Prometheus Config
 Add the following configuration in the `scrape_configs`-block into your `prometheus.yml` file. The `targets` port has to be the same as the `server-port` above.
 
