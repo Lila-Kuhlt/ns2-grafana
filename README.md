@@ -10,6 +10,9 @@ This project defines metrics for [Prometheus](https://prometheus.io/) from game 
 ## Run
 Run `python src/__init__.py`
 
+## Metrics
+You can find all defined metrics in the folder `src/metrics_handler/metrics/`. Every file is a single metric. You can read the descriptions defined in the files if you need more information.
+
 ## Externals
 ### NS2-Stat
 Note that you have to run [NS2-Stat](https://github.com/Lila-Kuhlt/ns2-stat) that provided the game data as api. Just go to the project and read their docu for help.
