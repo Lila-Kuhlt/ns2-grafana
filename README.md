@@ -10,10 +10,8 @@ This project defines metrics for [Prometheus](https://prometheus.io/) from game 
 ## Run
 Run `python src/__init__.py`
 
-## Grafana Dashboard
-If you want to use [Grafana](https://grafana.com/) to virtualise the metrics, you can find a ready-made dashboard in `grafana/dashboard.json`
-
-## Prometheus Config
+## Externals
+### Prometheus Config
 Add the following configuration in the `scrape_configs`-block into your `prometheus.yml` file. The `targets` port has to be the same as the `server-port` above.
 
 ```YML
@@ -22,3 +20,6 @@ Add the following configuration in the `scrape_configs`-block into your `prometh
     static_configs:
       - targets: ["localhost:8000"]
 ```
+
+### Grafana Dashboard
+If you want to use [Grafana](https://grafana.com/) to virtualise the metrics, you can find a ready-made dashboard in `grafana/dashboard.json`
