@@ -1,8 +1,11 @@
 import json
 
-config_file = open("config/config.json", "r")
-config = json.load(config_file)
-config_file.close()
+config = {
+    "ns2_stats_api_url": "http://localhost:8001/stats",
+
+    "server_port": 8000,
+    "metrics_update_interval_in_seconds": 60
+}
 
 
 def get():
