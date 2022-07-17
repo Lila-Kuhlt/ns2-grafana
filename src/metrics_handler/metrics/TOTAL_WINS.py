@@ -4,7 +4,7 @@ from metrics_handler._METRIC import _METRIC
 
 class TOTAL_WINS(_METRIC):
     def __init__(self):
-        super().__init__(Gauge('total_wins', 'Total wins in all games', ['race']))
+        super().__init__(Gauge('ns2_total_wins', 'Total wins in all games', ['race']))
 
     def update(self, api_data):
         try:

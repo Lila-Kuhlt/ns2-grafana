@@ -4,7 +4,7 @@ from metrics_handler._METRIC import _METRIC
 
 class MAPS(_METRIC):
     def __init__(self):
-        super().__init__(Gauge('maps', 'Total games on different maps', ['map']))
+        super().__init__(Gauge('ns2_maps', 'Total games on different maps', ['map']))
 
     def update(self, api_data):
         for map_name in api_data['data']['maps']:
