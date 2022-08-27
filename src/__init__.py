@@ -10,7 +10,6 @@ import time
 
 if __name__ == '__main__':
     cfg = config.get()
-    api_data = api.get_ns2_api_data(cfg["ns2_stats_api_url"])
     init()
 
     # Start up the server to expose the metrics_handler.
@@ -20,5 +19,6 @@ if __name__ == '__main__':
 
     # Generate some requests.
     while True:
+        api_data = api.get_ns2_api_data(cfg["ns2_stats_api_url"])
         update_all(api_data)
         time.sleep(cfg["metrics_update_interval_in_seconds"])
