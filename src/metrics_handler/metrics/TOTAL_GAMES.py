@@ -8,7 +8,7 @@ class TOTAL_GAMES(_METRIC):
 
     def update(self, api_data):
         try:
-            self.METRIC.set(api_data['data']['total_wins'])
+            self.METRIC.set(api_data['data']['total_games'])
         except:
             print()
 
