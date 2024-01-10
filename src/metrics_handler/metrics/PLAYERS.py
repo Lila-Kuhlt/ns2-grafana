@@ -12,8 +12,8 @@ class PLAYERS(_METRIC):
             assists = api_data['data']['users'][player_name]['assists']
             deaths = api_data['data']['users'][player_name]['deaths']
             commander = api_data['data']['users'][player_name]['commander']
-            kd = kills / deaths
-            kda = (kills + assists) / deaths
+            kd = kills / deaths if deaths > 0 else kills
+            kda = (kills + assists) / deaths if deaths > 0 else (kills + assists)
 
             try:
                 self.METRIC.labels(player_name, 'kills').set(kills)

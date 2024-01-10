@@ -3,4 +3,5 @@ __all__ = (
     'MAPS',
     'PLAYERS',
     'TOTAL_WINS'
+    'TOTAL_GAMES'
 )
