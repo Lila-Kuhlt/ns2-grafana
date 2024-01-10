@@ -1,9 +1,9 @@
 import json
 
 config = {
-    "ns2_stats_api_url": "http://localhost:8001/stats",
+    "ns2_stats_api_url": "http://localhost:9092/stats",
 
-    "server_port": 8000,
+    "server_port": 9099,
     "metrics_update_interval_in_seconds": 60
 }
 

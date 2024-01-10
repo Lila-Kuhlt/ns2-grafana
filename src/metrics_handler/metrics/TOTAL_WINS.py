@@ -10,6 +10,7 @@ class TOTAL_WINS(_METRIC):
         try:
             self.METRIC.labels('alien_wins').set(api_data['data']['alien_wins'])
             self.METRIC.labels('marine_wins').set(api_data['data']['marine_wins'])
+            self.METRIC.labels('total_games').set(api_data['data']['total_games'])
         except:
             print()
 
