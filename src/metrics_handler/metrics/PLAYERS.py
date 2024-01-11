@@ -11,10 +11,11 @@ class PLAYERS(_METRIC):
             total_games = api_data['data']['users'][player_name]['total_games']
             marine_games = api_data['data']['users'][player_name]['marines']
             alien_games = api_data['data']['users'][player_name]['aliens']
+            commander_games = api_data['data']['users'][player_name]['commander']
+            player_games = total_games - commander_games
             kills = api_data['data']['users'][player_name]['kills']
             assists = api_data['data']['users'][player_name]['assists']
             deaths = api_data['data']['users'][player_name]['deaths']
-            commander = api_data['data']['users'][player_name]['commander']
             kd = kills / deaths if deaths > 0 else kills
             kda = (kills + assists) / deaths if deaths > 0 else (kills + assists)
 
@@ -22,11 +23,12 @@ class PLAYERS(_METRIC):
                 self.METRIC.labels(player_name, 'total_games').set(total_games)
                 self.METRIC.labels(player_name, 'marine_games').set(marine_games)
                 self.METRIC.labels(player_name, 'alien_games').set(alien_games)
+                self.METRIC.labels(player_name, 'commander_games').set(commander_games)
+                self.METRIC.labels(player_name, 'player_games').set(player_games)
                 self.METRIC.labels(player_name, 'kills').set(kills)
                 self.METRIC.labels(player_name, 'assists').set(assists)
                 self.METRIC.labels(player_name, 'deaths').set(deaths)
                 self.METRIC.labels(player_name, 'kd').set(kd)
                 self.METRIC.labels(player_name, 'kda').set(kda)
-                self.METRIC.labels(player_name, 'commander').set(commander)
             except:
                 continue
