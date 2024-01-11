@@ -86,7 +86,92 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "KD"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 72
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "KDA"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 66
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Alien"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 63
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Marine"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 70
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Comm"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 67
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Player"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 285
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 15,
@@ -109,8 +194,8 @@
         "showHeader": true,
         "sortBy": [
           {
-            "desc": false,
-            "displayName": "Player"
+            "desc": true,
+            "displayName": "KD"
           }
         ]
       },
@@ -152,13 +237,58 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "ns2_players{stat_type=\"commander\"}",
+          "expr": "ns2_players{stat_type=\"alien_games\"}",
           "format": "table",
           "hide": false,
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
-          "refId": "Commander"
+          "refId": "ALIEN"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "ns2_players{stat_type=\"marine_games\"}",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "MARINE"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "ns2_players{stat_type=\"commander_games\"}",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "COMM"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "ns2_players{stat_type=\"total_games\"}",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "TOTAL"
         }
       ],
       "title": "Player Stats",
@@ -171,7 +301,10 @@
                 "player_name",
                 "Value #KD",
                 "Value #KDA",
-                "Value #Commander"
+                "Value #ALIEN",
+                "Value #MARINE",
+                "Value #COMM",
+                "Value #TOTAL"
               ]
             }
           }
@@ -190,9 +323,13 @@
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
+              "Value #ALIEN": "Alien",
+              "Value #COMM": "Comm",
               "Value #Commander": "Commander",
               "Value #KD": "KD",
               "Value #KDA": "KDA",
+              "Value #MARINE": "Marine",
+              "Value #TOTAL": "Total",
               "player_name": "Player"
             }
           }
@@ -434,6 +571,308 @@
     },
     {
       "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 45,
+      "panels": [],
+      "repeat": "Player",
+      "repeatDirection": "h",
+      "title": "Specific Player Stats ($Player)",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 2,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 17
+      },
+      "id": 47,
+      "options": {
+        "minVizHeight": 200,
+        "minVizWidth": 200,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "ns2_players{player_name=\"$Player\", stat_type=\"kd\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "KD",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "alien_games": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Alien"
+                },
+                "marine_games": {
+                  "color": "blue",
+                  "index": 0,
+                  "text": "Marine"
+                }
+              },
+              "type": "value"
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 4,
+        "y": 17
+      },
+      "id": 46,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "asc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "ns2_players{player_name=\"$Player\"}",
+          "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{stat_type}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Marine/Alien Ratio",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "alien_games",
+                "marine_games"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "alien_games": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Alien"
+                },
+                "marine_games": {
+                  "color": "blue",
+                  "index": 0,
+                  "text": "Marine"
+                }
+              },
+              "type": "value"
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 7,
+        "y": 17
+      },
+      "id": 48,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "asc"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c93bd3b6-cee8-45ff-a9d8-a1eb9a54f621"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "ns2_players{player_name=\"$Player\"}",
+          "format": "time_series",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{stat_type}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Comm/Player Ratio",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "player_games",
+                "commander_games"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "collapsed": false,
       "datasource": {
         "type": "prometheus",
         "uid": "HBsh5mg4z"
@@ -442,7 +881,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 24
       },
       "id": 32,
       "panels": [],
@@ -525,7 +964,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 25
       },
       "id": 37,
       "options": {
@@ -621,7 +1060,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 25
       },
       "id": 41,
       "options": {
@@ -717,7 +1156,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 38
       },
       "id": 39,
       "options": {
@@ -813,7 +1252,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 38
       },
       "id": 40,
       "options": {
@@ -909,7 +1348,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 43
+        "y": 51
       },
       "id": 44,
       "options": {
@@ -932,7 +1371,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "ns2_players{stat_type=\"commander\"}",
+          "expr": "ns2_players{stat_type=\"commander_games\"}",
           "interval": "",
           "legendFormat": "{{player_name}}",
           "range": true,
@@ -1005,7 +1444,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 43
+        "y": 51
       },
       "id": 38,
       "options": {
@@ -1048,7 +1487,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 64
       },
       "id": 10,
       "panels": [],
@@ -1089,7 +1528,7 @@
         "h": 7,
         "w": 3,
         "x": 0,
-        "y": 57
+        "y": 65
       },
       "id": 8,
       "links": [
@@ -1168,7 +1607,7 @@
         "h": 7,
         "w": 3,
         "x": 3,
-        "y": 57
+        "y": 65
       },
       "id": 13,
       "links": [
@@ -1247,7 +1686,7 @@
         "h": 7,
         "w": 3,
         "x": 6,
-        "y": 57
+        "y": 65
       },
       "id": 14,
       "links": [
@@ -1326,7 +1765,7 @@
         "h": 7,
         "w": 3,
         "x": 9,
-        "y": 57
+        "y": 65
       },
       "id": 16,
       "links": [
@@ -1405,7 +1844,7 @@
         "h": 7,
         "w": 3,
         "x": 12,
-        "y": 57
+        "y": 65
       },
       "id": 17,
       "links": [
@@ -1484,7 +1923,7 @@
         "h": 7,
         "w": 3,
         "x": 15,
-        "y": 57
+        "y": 65
       },
       "id": 20,
       "links": [
@@ -1563,7 +2002,7 @@
         "h": 7,
         "w": 3,
         "x": 18,
-        "y": 57
+        "y": 65
       },
       "id": 19,
       "links": [
@@ -1641,7 +2080,7 @@
         "h": 7,
         "w": 3,
         "x": 21,
-        "y": 57
+        "y": 65
       },
       "id": 23,
       "links": [
@@ -1719,7 +2158,7 @@
         "h": 7,
         "w": 3,
         "x": 0,
-        "y": 64
+        "y": 72
       },
       "id": 22,
       "links": [
@@ -1798,7 +2237,7 @@
         "h": 7,
         "w": 3,
         "x": 3,
-        "y": 64
+        "y": 72
       },
       "id": 21,
       "links": [
@@ -1877,7 +2316,7 @@
         "h": 7,
         "w": 3,
         "x": 6,
-        "y": 64
+        "y": 72
       },
       "id": 24,
       "links": [
@@ -1956,7 +2395,7 @@
         "h": 7,
         "w": 3,
         "x": 9,
-        "y": 64
+        "y": 72
       },
       "id": 18,
       "links": [
@@ -2035,7 +2474,7 @@
         "h": 7,
         "w": 3,
         "x": 12,
-        "y": 64
+        "y": 72
       },
       "id": 26,
       "links": [
@@ -2113,7 +2552,7 @@
         "h": 7,
         "w": 3,
         "x": 15,
-        "y": 64
+        "y": 72
       },
       "id": 25,
       "links": [
@@ -2192,7 +2631,7 @@
         "h": 7,
         "w": 3,
         "x": 18,
-        "y": 64
+        "y": 72
       },
       "id": 27,
       "links": [
@@ -2271,7 +2710,7 @@
         "h": 7,
         "w": 3,
         "x": 21,
-        "y": 64
+        "y": 72
       },
       "id": 30,
       "links": [
@@ -2350,7 +2789,7 @@
         "h": 7,
         "w": 3,
         "x": 0,
-        "y": 71
+        "y": 79
       },
       "id": 29,
       "links": [
@@ -2410,7 +2849,31 @@
     "NS2"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "Kid Ilias",
+          "value": "Kid Ilias"
+        },
+        "definition": "label_values(ns2_players,player_name)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "Player",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ns2_players,player_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-5m",
@@ -2427,6 +2890,6 @@
   "timezone": "",
   "title": "NS2-General",
   "uid": "Q-kzR687k",
-  "version": 14,
+  "version": 18,
   "weekStart": "monday"
 }
